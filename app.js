@@ -33,6 +33,12 @@ const playEffectThree = () => {
   audio.play();
 };
 
+function shuffleArr(target) {
+  [].slice.call(document.querySelectorAll(target)).filter(function (_e) {
+    _e.style.order = Math.floor(Math.random() * 10 + 1);
+  });
+}
+
 const createGrid = (col, row) => {
   root.style.setProperty("--col", col);
   root.style.setProperty("--row", row);
@@ -90,6 +96,8 @@ const createGrid = (col, row) => {
   main.appendChild(myGrid);
   body.appendChild(pikaContainer);
   pikaContainer.appendChild(pikaRun);
+
+  shuffleArr(".grid-item");
 
   startTimer();
 };
