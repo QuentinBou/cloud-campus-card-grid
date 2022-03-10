@@ -1,4 +1,5 @@
 const main = document.querySelector("main");
+const body = document.querySelector("body");
 const root = document.documentElement;
 
 let clicked = [];
@@ -63,7 +64,6 @@ const createGrid = (col, row) => {
       } while (secondImgArray.includes(imgNb));
       secondImgArray.push(imgNb);
     }
-    console.log(imgNb);
     cpt += 1;
 
     let newDiv = document.createElement("div");
@@ -82,10 +82,10 @@ const createGrid = (col, row) => {
   pikaRun.src = "assets/img/pika_run.gif";
   pikaRun.className = "pika";
 
-  main.appendChild(pikaContainer);
-  pikaContainer.appendChild(pikaRun);
   main.appendChild(title);
   main.appendChild(myGrid);
+  body.appendChild(pikaContainer);
+  pikaContainer.appendChild(pikaRun);
 
   startTimer();
 };
