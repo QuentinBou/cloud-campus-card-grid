@@ -28,11 +28,17 @@ main h1 {
     padding-bottom: 60px;
     padding-left: 40px;
     display: grid;
-    grid-template-columns: repeat(var(--col), 5vw);
-    grid-template-rows: repeat(var(--row), 5vh);
+    grid-template-columns: repeat(var(--col), 12vw);
+    grid-template-rows: repeat(var(--row), 12vh);
     grid-gap: 10px;
 }
 .grid-item {
     background-color: goldenrod;
     border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.grid-item img {
+    width: 75px;
 }

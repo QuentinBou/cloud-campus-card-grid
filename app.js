@@ -16,6 +16,7 @@ const createGrid = (col, row) => {
     for (let i = 0; i < col * row; i++){
         let newDiv = document.createElement("div")
         newDiv.classList.add("grid-item")
+        newDiv.innerHTML = `<img src='assets/img/${i + 1}.png'/>`
         myGrid.appendChild(newDiv)
     }
 
@@ -23,7 +24,7 @@ const createGrid = (col, row) => {
     main.appendChild(myGrid)
 }
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', () => {
     let colChoice = prompt("Nombre de colonnes ?")
     let rowChoice = prompt("Nombre de lignes ?")
 
