@@ -20,6 +20,15 @@ const createGrid = (col, row) => {
         myGrid.appendChild(newDiv)
     }
 
+    let pikaContainer = document.createElement('div')
+    pikaContainer.className = "loader-container"
+
+    let pikaRun = document.createElement('img')
+    pikaRun.src = "assets/img/pika_run.gif"
+    pikaRun.className = "pika"
+
+    main.appendChild(pikaContainer)
+    pikaContainer.appendChild(pikaRun)
     main.appendChild(title)
     main.appendChild(myGrid)
 }
