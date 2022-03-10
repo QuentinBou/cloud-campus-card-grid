@@ -23,4 +23,10 @@ const createGrid = (col, row) => {
     main.appendChild(myGrid)
 }
 
-createGrid(7, 4)
+window.addEventListener('load', async () => {
+    let colChoice = prompt("Nombre de colonnes ?")
+    let rowChoice = prompt("Nombre de lignes ?")
+
+    createGrid(parseInt(colChoice), parseInt(rowChoice))
+})
+55
