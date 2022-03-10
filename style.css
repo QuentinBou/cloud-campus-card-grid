@@ -3,6 +3,11 @@
   --row: 1;
 }
 
+@font-face {
+  font-family: "PokemonSolid";
+  src: url(assets/fonts/PokemonSolid.ttf);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -31,8 +36,13 @@ main {
 }
 main h1 {
   margin-top: 2rem;
-  font-size: 3rem;
-  font-weight: bold;
+  font-size: 5rem;
+  font-family: "PokemonSolid", sans-serif !important;
+  letter-spacing: 4px;
+  text-shadow: 2px 0 0 yellow, -2px 0 0 yellow, 0 2px 0 yellow, 0 -2px 0 yellow,
+    1px 1px yellow, -1px -1px 0 yellow, 1px -1px 0 yellow, -1px 1px 0 yellow;
+  line-height: 5rem;
+  text-transform: uppercase;
 }
 .grid-container {
   background-color: transparent;
@@ -62,12 +72,14 @@ main h1 {
   position: absolute;
   top: 40%;
   right: 3%;
-  font-size: 5rem;
-  font-weight: bold;
+  font-size: 4rem;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: whitesmoke;
   transition: all 1s ease-in-out;
+  font-family: "PokemonSolid", sans-serif !important;
+  letter-spacing: 2px;
+  line-height: 5rem;
 }
 .best-time {
   position: absolute;
@@ -76,11 +88,18 @@ main h1 {
   left: 3%;
   font-size: 3rem;
   width: 25%;
-  font-weight: bold;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
   color: whitesmoke;
   transition: all 1s ease-in-out;
+  font-family: "PokemonSolid", sans-serif !important;
+  letter-spacing: 2px;
+  line-height: 5rem;
+}
+.timer,
+.best-time {
+  text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
+    1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
 /* .loader-container {
   position: absolute;
@@ -101,7 +120,7 @@ main h1 {
     left: 100%;
   }
 }
-
+*/
 @keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);
@@ -113,18 +132,18 @@ main h1 {
     opacity: 0;
     border-radius: 50%;
   }
-} */
+}
 
 .background {
   position: fixed;
-  z-index: 0;
   width: 100vw;
   height: 100vh;
+  z-index: 0;
   top: 0;
   left: 0;
   margin: 0;
   padding: 0;
-  background: #5ee04d;
+  background: #19b305;
   overflow: hidden;
 }
 .background li {
@@ -134,76 +153,132 @@ main h1 {
   width: 20px;
   height: 20px;
   background: rgba(255, 255, 255, 0.2);
-  animation: animate 19s linear infinite;
+  animation: animate 11s linear infinite;
 }
 
 .background li:nth-child(0) {
-  left: 50%;
-  width: 179px;
-  height: 179px;
-  bottom: -179px;
+  left: 30%;
+  width: 180px;
+  height: 180px;
+  bottom: -180px;
   animation-delay: 1s;
 }
 .background li:nth-child(1) {
-  left: 13%;
-  width: 135px;
-  height: 135px;
-  bottom: -135px;
-  animation-delay: 3s;
-}
-.background li:nth-child(2) {
-  left: 87%;
-  width: 136px;
-  height: 136px;
-  bottom: -136px;
-  animation-delay: 2s;
-}
-.background li:nth-child(3) {
-  left: 25%;
-  width: 103px;
-  height: 103px;
-  bottom: -103px;
-  animation-delay: 11s;
-}
-.background li:nth-child(4) {
-  left: 86%;
-  width: 101px;
-  height: 101px;
-  bottom: -101px;
-  animation-delay: 1s;
-}
-.background li:nth-child(5) {
-  left: 44%;
-  width: 130px;
-  height: 130px;
-  bottom: -130px;
-  animation-delay: 10s;
-}
-.background li:nth-child(6) {
-  left: 36%;
-  width: 138px;
-  height: 138px;
-  bottom: -138px;
-  animation-delay: 18s;
-}
-.background li:nth-child(7) {
-  left: 72%;
-  width: 184px;
-  height: 184px;
-  bottom: -184px;
-  animation-delay: 6s;
-}
-.background li:nth-child(8) {
-  left: 63%;
+  left: 9%;
   width: 191px;
   height: 191px;
   bottom: -191px;
-  animation-delay: 34s;
+  animation-delay: 5s;
+}
+.background li:nth-child(2) {
+  left: 67%;
+  width: 180px;
+  height: 180px;
+  bottom: -180px;
+  animation-delay: 10s;
+}
+.background li:nth-child(3) {
+  left: 18%;
+  width: 122px;
+  height: 122px;
+  bottom: -122px;
+  animation-delay: 12s;
+}
+.background li:nth-child(4) {
+  left: 69%;
+  width: 198px;
+  height: 198px;
+  bottom: -198px;
+  animation-delay: 3s;
+}
+.background li:nth-child(5) {
+  left: 24%;
+  width: 163px;
+  height: 163px;
+  bottom: -163px;
+  animation-delay: 25s;
+}
+.background li:nth-child(6) {
+  left: 8%;
+  width: 130px;
+  height: 130px;
+  bottom: -130px;
+  animation-delay: 3s;
+}
+.background li:nth-child(7) {
+  left: 80%;
+  width: 167px;
+  height: 167px;
+  bottom: -167px;
+  animation-delay: 5s;
+}
+.background li:nth-child(8) {
+  left: 62%;
+  width: 150px;
+  height: 150px;
+  bottom: -150px;
+  animation-delay: 32s;
 }
 .background li:nth-child(9) {
-  left: 30%;
-  width: 171px;
-  height: 171px;
-  bottom: -171px;
-  animation-delay: 18s;
+  left: 0%;
+  width: 180px;
+  height: 180px;
+  bottom: -180px;
+  animation-delay: 36s;
+}
+.background li:nth-child(10) {
+  left: 4%;
+  width: 186px;
+  height: 186px;
+  bottom: -186px;
+  animation-delay: 13s;
+}
+.background li:nth-child(11) {
+  left: 26%;
+  width: 142px;
+  height: 142px;
+  bottom: -142px;
+  animation-delay: 54s;
+}
+.background li:nth-child(12) {
+  left: 37%;
+  width: 199px;
+  height: 199px;
+  bottom: -199px;
+  animation-delay: 14s;
+}
+.background li:nth-child(13) {
+  left: 46%;
+  width: 218px;
+  height: 218px;
+  bottom: -218px;
+  animation-delay: 49s;
+}
+.background li:nth-child(14) {
+  left: 17%;
+  width: 207px;
+  height: 207px;
+  bottom: -207px;
+  animation-delay: 10s;
+}
+.background li:nth-child(15) {
+  left: 6%;
+  width: 127px;
+  height: 127px;
+  bottom: -127px;
+  animation-delay: 29s;
+}
+.background li:nth-child(16) {
+  left: 66%;
+  width: 106px;
+  height: 106px;
+  bottom: -106px;
+  animation-delay: 64s;
+}
+.background li:nth-child(17) {
+  left: 5%;
+  width: 226px;
+  height: 226px;
+  bottom: -226px;
+  animation-delay: 76s;
 }
