@@ -5,8 +5,25 @@ let clicked = [];
 
 let currentCard;
 
-const sleep = (timeMs) => {
-  return new Promise((resolve) => setTimeout(resolve, timeMs));
+const playEffectOne = () => {
+  let audio = new Audio("assets/song/effect-1.mp3");
+  audio.volume = 0.1;
+  audio.play();
+};
+
+const playEffectTwo = () => {
+  let audio = new Audio("assets/song/effect-1.mp3");
+  audio.volume = 0.1;
+  audio.play();
+  setTimeout(() => {
+    audio.pause();
+  }, 800);
+};
+
+const playEffectThree = () => {
+  let audio = new Audio("assets/song/effect-3.mp3");
+  audio.volume = 0.1;
+  audio.play();
 };
 
 const createGrid = (col, row) => {
@@ -109,8 +126,10 @@ const checkImg = (id, target) => {
   showImg(id, target);
   if (clicked.length == 0) {
     currentCard = target;
+    playEffectTwo();
     clicked.push(id);
   } else if (clicked[0] != id) {
+    playEffectThree();
     setTimeout(() => {
       clicked = [];
       hideImg(currentCard);
@@ -118,9 +137,9 @@ const checkImg = (id, target) => {
     }, 1200);
   } else if (clicked[0] == id) {
     clicked = [];
+    playEffectOne();
     successAlert();
   }
-  console.log(clicked);
 };
 
 window.addEventListener("load", () => {
