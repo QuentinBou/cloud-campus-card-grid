@@ -61,6 +61,8 @@ const createGrid = (col, row) => {
   pikaContainer.appendChild(pikaRun);
   main.appendChild(title);
   main.appendChild(myGrid);
+
+  startTimer();
 };
 
 const successAlert = () => {
@@ -73,6 +75,27 @@ const successAlert = () => {
     icon: "success",
     title: "Bien joué !",
   });
+};
+
+const startTimer = () => {
+  let timer = document.querySelector(".timer");
+  let min = 0;
+  let second = 0;
+  function formatTime(time) {
+    if (time < 10) {
+      return `0${time}`;
+    } else return time;
+  }
+  setInterval(() => {
+    second += 1;
+    if (second == 60) {
+      second = 0;
+      min += 1;
+      timer.textContent = `${formatTime(min)}:${formatTime(second)}`;
+    } else {
+      timer.textContent = `${formatTime(min)}:${formatTime(second)}`;
+    }
+  }, 1000);
 };
 
 const showImg = (i, target) => {
