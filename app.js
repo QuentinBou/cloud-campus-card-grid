@@ -5,6 +5,8 @@ let clicked = [];
 
 let currentCard;
 
+let colRow;
+
 const playEffectOne = () => {
   let audio = new Audio("assets/song/effect-1.mp3");
   audio.volume = 0.1;
@@ -30,6 +32,12 @@ const createGrid = (col, row) => {
   root.style.setProperty("--col", col);
   root.style.setProperty("--row", row);
 
+  if ((col * row) % 2 != 0) {
+    colRow = col * row - 1;
+  } else {
+    colRow = col * row;
+  }
+
   let title = document.createElement("h1");
   title.textContent = "Jeu de mémoire";
 
@@ -40,10 +48,10 @@ const createGrid = (col, row) => {
   let cpt = 0;
   let secondImgArray = [];
 
-  for (let i = 0; i < col * row; i++) {
+  for (let i = 0; i < colRow; i++) {
     let imgNb;
 
-    if (cpt < (col * row) / 2) {
+    if (cpt < colRow / 2) {
       do {
         imgNb = Math.floor(Math.random() * 25 + 1);
       } while (imgArray.includes(imgNb));
@@ -51,7 +59,7 @@ const createGrid = (col, row) => {
       imgArray.push(imgNb);
     } else {
       do {
-        imgNb = imgArray[Math.floor(Math.random() * ((col * row) / 2))];
+        imgNb = imgArray[Math.floor(Math.random() * (colRow / 2))];
       } while (secondImgArray.includes(imgNb));
       secondImgArray.push(imgNb);
     }
