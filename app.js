@@ -1,6 +1,14 @@
 const main = document.querySelector("main");
 const root = document.documentElement;
 
+let clicked = [];
+
+let currentCard;
+
+const sleep = (timeMs) => {
+  return new Promise((resolve) => setTimeout(resolve, timeMs));
+};
+
 const createGrid = (col, row) => {
   root.style.setProperty("--col", col);
   root.style.setProperty("--row", row);
@@ -20,7 +28,7 @@ const createGrid = (col, row) => {
 
     if (cpt < (col * row) / 2) {
       do {
-        imgNb = Math.floor(Math.random() * 25);
+        imgNb = Math.floor(Math.random() * 25 + 1);
       } while (imgArray.includes(imgNb));
 
       imgArray.push(imgNb);
@@ -30,14 +38,14 @@ const createGrid = (col, row) => {
       } while (secondImgArray.includes(imgNb));
       secondImgArray.push(imgNb);
     }
-
+    console.log(imgNb);
     cpt += 1;
 
     let newDiv = document.createElement("div");
     newDiv.classList.add("grid-item");
     newDiv.innerHTML = `<img src='assets/img/pokeball.gif' data-img='${imgNb}'/>`;
     newDiv.addEventListener("click", () => {
-      showImg(imgNb, newDiv);
+      checkImg(imgNb, newDiv);
     });
     myGrid.appendChild(newDiv);
   }
@@ -55,8 +63,41 @@ const createGrid = (col, row) => {
   main.appendChild(myGrid);
 };
 
+const successAlert = () => {
+  Swal.fire({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    icon: "success",
+    title: "Bien joué !",
+  });
+};
+
 const showImg = (i, target) => {
   target.innerHTML = `<img src='assets/img/${i + 1}.png'/>`;
+};
+const hideImg = (target) => {
+  target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
+};
+
+const checkImg = (id, target) => {
+  showImg(id, target);
+  if (clicked.length == 0) {
+    currentCard = target;
+    clicked.push(id);
+  } else if (clicked[0] != id) {
+    setTimeout(() => {
+      clicked = [];
+      hideImg(currentCard);
+      hideImg(target);
+    }, 1200);
+  } else if (clicked[0] == id) {
+    clicked = [];
+    successAlert();
+  }
+  console.log(clicked);
 };
 
 window.addEventListener("load", () => {
