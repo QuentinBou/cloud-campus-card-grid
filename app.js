@@ -8,6 +8,8 @@ let currentCard;
 
 let colRow;
 
+let found = [];
+
 const playEffectOne = () => {
   let audio = new Audio("assets/song/effect-1.mp3");
   audio.volume = 0.1;
@@ -124,35 +126,44 @@ const startTimer = () => {
 };
 
 const showImg = (i, target) => {
-  target.childNodes[0].style.transform = "rotate(360deg)";
+  target.childNodes[0].style.transform = "scale(1) rotate(360deg)";
   setTimeout(() => {
     target.innerHTML = `<img src='assets/img/${i + 1}.png'/>`;
   }, 1000);
 };
 const hideImg = (target) => {
-  target.childNodes[0].style.transform = "scale(0)";
+  target.childNodes[0].style.transform = "scale(0) rotate(-360deg)";
   setTimeout(() => {
     target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
-    target.childNodes[0].style.transform = "scale(1)";
+    target.childNodes[0].style.transform = "scale(1) rotate(0)";
   }, 1000);
 };
 
 const checkImg = (id, target) => {
   showImg(id, target);
   setTimeout(() => {
-    if (clicked.length == 0) {
+    if (clicked.length == 0 && !found.includes(id) && currentCard != target) {
       currentCard = target;
       playEffectTwo();
       clicked.push(id);
-    } else if (clicked[0] != id) {
+    } else if (
+      clicked[0] != id &&
+      !found.includes(id) &&
+      currentCard != target
+    ) {
       playEffectThree();
+      clicked = [];
       setTimeout(() => {
-        clicked = [];
         hideImg(currentCard);
         hideImg(target);
       }, 1200);
-    } else if (clicked[0] == id) {
+    } else if (
+      clicked[0] == id &&
+      !found.includes(id) &&
+      currentCard != target
+    ) {
       clicked = [];
+      found.push(id);
       playEffectOne();
       successAlert();
     }
