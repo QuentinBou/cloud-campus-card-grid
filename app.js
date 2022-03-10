@@ -130,30 +130,33 @@ const showImg = (i, target) => {
   }, 1000);
 };
 const hideImg = (target) => {
-  target.childNodes[0].style.transform = "rotate(-360deg)";
+  target.childNodes[0].style.transform = "scale(0)";
   setTimeout(() => {
     target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
+    target.childNodes[0].style.transform = "scale(1)";
   }, 1000);
 };
 
 const checkImg = (id, target) => {
   showImg(id, target);
-  if (clicked.length == 0) {
-    currentCard = target;
-    playEffectTwo();
-    clicked.push(id);
-  } else if (clicked[0] != id) {
-    playEffectThree();
-    setTimeout(() => {
+  setTimeout(() => {
+    if (clicked.length == 0) {
+      currentCard = target;
+      playEffectTwo();
+      clicked.push(id);
+    } else if (clicked[0] != id) {
+      playEffectThree();
+      setTimeout(() => {
+        clicked = [];
+        hideImg(currentCard);
+        hideImg(target);
+      }, 1200);
+    } else if (clicked[0] == id) {
       clicked = [];
-      hideImg(currentCard);
-      hideImg(target);
-    }, 1200);
-  } else if (clicked[0] == id) {
-    clicked = [];
-    playEffectOne();
-    successAlert();
-  }
+      playEffectOne();
+      successAlert();
+    }
+  }, 700);
 };
 
 window.addEventListener("load", () => {
