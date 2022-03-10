@@ -85,7 +85,7 @@ main h1 {
   position: absolute;
   top: 40%;
   text-align: center;
-  left: 3%;
+  left: 1%;
   font-size: 3rem;
   width: 25%;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -101,10 +101,9 @@ main h1 {
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000,
     1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 }
-/* .loader-container {
+.loader-container {
   position: absolute;
-  top: 40%;
-  left: 5%;
+  top: 0%;
   transition: all 1s ease-in-out;
 }
 .loader-container img {
@@ -115,12 +114,19 @@ main h1 {
   top: 35%;
   left: 5%;
 }
+.left {
+    left: 3%;
+}
+.right {
+    right: 3%;
+    transform: scaleX(-1);
+}
 @keyframes loader {
   to {
     left: 100%;
   }
 }
-*/
+
 @keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);

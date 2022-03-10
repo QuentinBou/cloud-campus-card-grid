@@ -219,10 +219,10 @@ window.addEventListener("load", () => {
   let rowChoice;
   let maxRow;
   do {
-    colChoice = prompt("Nombre de colonnes ?");
+    colChoice = prompt("Nombre de colonnes ? max: 5");
     maxRow = Math.floor(26 / parseInt(colChoice));
     rowChoice = prompt("Nombre de lignes ? max: " + maxRow);
-  } while (parseInt(colChoice) * parseInt(colRow) > 26);
+  } while (parseInt(colChoice) * parseInt(colRow) > 26 || parseInt(colChoice) > 5);
 
   createGrid(parseInt(colChoice), parseInt(rowChoice));
 });
