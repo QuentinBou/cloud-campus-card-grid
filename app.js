@@ -8,7 +8,7 @@ const createGrid = (col, row) => {
 
 
     let title = document.createElement('h1')
-    title.textContent = "La grille"
+    title.textContent = "Jeu de mémoire"
     
     let myGrid = document.createElement('div')
     myGrid.classList.add('grid-container')
