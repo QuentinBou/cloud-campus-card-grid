@@ -85,17 +85,8 @@ const createGrid = (col, row) => {
     myGrid.appendChild(newDiv);
   }
 
-  let pikaContainer = document.createElement("div");
-  pikaContainer.className = "loader-container";
-
-  let pikaRun = document.createElement("img");
-  pikaRun.src = "assets/img/pika_run.gif";
-  pikaRun.className = "pika";
-
   main.appendChild(title);
   main.appendChild(myGrid);
-  body.appendChild(pikaContainer);
-  pikaContainer.appendChild(pikaRun);
 
   shuffleArr(".grid-item");
 
@@ -212,8 +203,14 @@ const checkImg = (id, target) => {
 };
 
 window.addEventListener("load", () => {
-  let colChoice = prompt("Nombre de colonnes ?");
-  let rowChoice = prompt("Nombre de lignes ?");
+  let colChoice;
+  let rowChoice;
+  let maxRow;
+  do {
+    colChoice = prompt("Nombre de colonnes ?");
+    maxRow = Math.floor(26 / parseInt(colChoice));
+    rowChoice = prompt("Nombre de lignes ? max: " + maxRow);
+  } while (parseInt(colChoice) * parseInt(colRow) > 26);
 
   createGrid(parseInt(colChoice), parseInt(rowChoice));
 });
