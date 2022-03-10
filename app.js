@@ -6,6 +6,8 @@ let clicked = [];
 
 let currentCard;
 
+let time;
+
 let colRow;
 
 let found = [];
@@ -104,6 +106,15 @@ const successAlert = () => {
   });
 };
 
+const endAlert = () => {
+  Swal.fire({
+    position: "center",
+    showConfirmButton: true,
+    icon: "success",
+    title: time,
+  });
+};
+
 const startTimer = () => {
   let timer = document.querySelector(".timer");
   let min = 0;
@@ -125,6 +136,13 @@ const startTimer = () => {
   }, 1000);
 };
 
+const getTime = () => {
+  let timeArray = document.querySelector(".timer").textContent.split(":");
+  return `Réussi en ${timeArray[0] != "00" ? timeArray[0] + " minutes" : " "} ${
+    timeArray[1]
+  } secondes`;
+};
+
 const showImg = (i, target) => {
   target.childNodes[0].style.transform = "scale(1) rotate(360deg)";
   setTimeout(() => {
@@ -137,6 +155,12 @@ const hideImg = (target) => {
     target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
     target.childNodes[0].style.transform = "scale(1) rotate(0)";
   }, 1000);
+};
+
+const hideMain = () => {
+  main.style.transform = "scale(0)";
+  document.querySelector(".loader-container").style.transform = "scale(0)";
+  document.querySelector(".timer").style.transform = "scale(0)";
 };
 
 const checkImg = (id, target) => {
@@ -168,6 +192,15 @@ const checkImg = (id, target) => {
       successAlert();
     }
   }, 700);
+  time = getTime();
+  setTimeout(() => {
+    if (found.length == colRow / 2) {
+      hideMain();
+      setTimeout(() => {
+        endAlert();
+      }, 700);
+    }
+  }, 1500);
 };
 
 window.addEventListener("load", () => {
