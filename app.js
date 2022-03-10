@@ -4,6 +4,8 @@ const root = document.documentElement;
 
 let clicked = [];
 
+let timeArray = [];
+
 let currentCard;
 
 let time;
@@ -133,13 +135,23 @@ const startTimer = () => {
       timer.textContent = `${formatTime(min)}:${formatTime(second)}`;
     }
   }, 1000);
+  if (localStorage.getItem("bestTime")) {
+    document.querySelector(".best-time").textContent =
+      localStorage.getItem("bestTime");
+  } else {
+    document.querySelector(".best-time").textContent = "Score à battre : ??:??";
+  }
 };
 
 const getTime = () => {
-  let timeArray = document.querySelector(".timer").textContent.split(":");
+  timeArray = document.querySelector(".timer").textContent.split(":");
   return `Réussi en ${timeArray[0] != "00" ? timeArray[0] + " minutes" : " "} ${
     timeArray[1]
   } secondes`;
+};
+
+const saveTime = () => {
+  localStorage.setItem("bestTime", `Score à battre : ${timeArray.join(":")}`);
 };
 
 const showImg = (i, target) => {
@@ -158,7 +170,6 @@ const hideImg = (target) => {
 
 const hideMain = () => {
   main.style.transform = "scale(0)";
-  document.querySelector(".loader-container").style.transform = "scale(0)";
   document.querySelector(".timer").style.transform = "scale(0)";
 };
 
@@ -194,6 +205,7 @@ const checkImg = (id, target) => {
   time = getTime();
   setTimeout(() => {
     if (found.length == colRow / 2) {
+      saveTime();
       hideMain();
       setTimeout(() => {
         endAlert();
