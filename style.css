@@ -55,6 +55,7 @@ main h1 {
 }
 .grid-item img {
   width: 100px;
+  transition: all 1s ease-in-out;
 }
 .timer {
   position: absolute;

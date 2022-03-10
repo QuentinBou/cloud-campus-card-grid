@@ -124,10 +124,16 @@ const startTimer = () => {
 };
 
 const showImg = (i, target) => {
-  target.innerHTML = `<img src='assets/img/${i + 1}.png'/>`;
+  target.childNodes[0].style.transform = "rotate(360deg)";
+  setTimeout(() => {
+    target.innerHTML = `<img src='assets/img/${i + 1}.png'/>`;
+  }, 1000);
 };
 const hideImg = (target) => {
-  target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
+  target.childNodes[0].style.transform = "rotate(-360deg)";
+  setTimeout(() => {
+    target.innerHTML = `<img src='assets/img/pokeball.gif'/>`;
+  }, 1000);
 };
 
 const checkImg = (id, target) => {
