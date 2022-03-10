@@ -1,0 +1,38 @@
+:root {
+    --col: 1;
+    --row: 1;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+main {
+    width: 60%;
+    min-height: 40vh;
+    margin: 3rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+main h1 {
+    font-size: 3rem;
+    font-weight: bold;
+}
+.grid-container {
+    background-color: transparent;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-left: 40px;
+    display: grid;
+    grid-template-columns: repeat(var(--col), 5vw);
+    grid-template-rows: repeat(var(--row), 5vh);
+    grid-gap: 10px;
+}
+.grid-item {
+    background-color: goldenrod;
+    border: 1px solid black;
+}
